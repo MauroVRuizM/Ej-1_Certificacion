@@ -1,0 +1,11 @@
+C:\Users\USER\Desktop\Programas Mauro\RepositorioTemporal\Ej-1_Certificacion\BEUEjercicio\bin\Debug\BEUEjercicio.dll.config
+C:\Users\USER\Desktop\Programas Mauro\RepositorioTemporal\Ej-1_Certificacion\BEUEjercicio\bin\Debug\BEUEjercicio.dll
+C:\Users\USER\Desktop\Programas Mauro\RepositorioTemporal\Ej-1_Certificacion\BEUEjercicio\bin\Debug\BEUEjercicio.pdb
+C:\Users\USER\Desktop\Programas Mauro\RepositorioTemporal\Ej-1_Certificacion\BEUEjercicio\bin\Debug\EntityFramework.dll
+C:\Users\USER\Desktop\Programas Mauro\RepositorioTemporal\Ej-1_Certificacion\BEUEjercicio\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\USER\Desktop\Programas Mauro\RepositorioTemporal\Ej-1_Certificacion\BEUEjercicio\bin\Debug\EntityFramework.xml
+C:\Users\USER\Desktop\Programas Mauro\RepositorioTemporal\Ej-1_Certificacion\BEUEjercicio\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\USER\Desktop\Programas Mauro\RepositorioTemporal\Ej-1_Certificacion\BEUEjercicio\obj\Debug\BEUEjercicio.csproj.CoreCompileInputs.cache
+C:\Users\USER\Desktop\Programas Mauro\RepositorioTemporal\Ej-1_Certificacion\BEUEjercicio\obj\Debug\BEUEjercicio.csproj.CopyComplete
+C:\Users\USER\Desktop\Programas Mauro\RepositorioTemporal\Ej-1_Certificacion\BEUEjercicio\obj\Debug\BEUEjercicio.dll
+C:\Users\USER\Desktop\Programas Mauro\RepositorioTemporal\Ej-1_Certificacion\BEUEjercicio\obj\Debug\BEUEjercicio.pdb
