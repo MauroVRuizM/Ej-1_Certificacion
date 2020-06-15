@@ -35,6 +35,7 @@ namespace BEUEjercicio
         public string apellidos { get; set; }
 
         [DataType(DataType.Text)]
+        [Required(ErrorMessage = "La cédula es requerida"), MaxLength(15)]
         [Display(Name = "Cédula")]
         public string cedula { get; set; }
 

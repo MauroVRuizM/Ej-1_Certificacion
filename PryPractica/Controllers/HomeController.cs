@@ -15,7 +15,7 @@ namespace PryPractica.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Message = "Certificación I - NRC 7614.";
 
             return View();
         }
