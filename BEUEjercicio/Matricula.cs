@@ -11,7 +11,9 @@ namespace BEUEjercicio
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
+
     public partial class Matricula
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -19,13 +21,34 @@ namespace BEUEjercicio
         {
             this.Calificacions = new HashSet<Calificacion>();
         }
-    
+
+        [ScaffoldColumn(false)]
         public int idmatricula { get; set; }
+
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
+        [Display(Name = "Fecha de Matricula")]
         public Nullable<System.DateTime> fecha { get; set; }
+
+        [Required]
+        [Column(TypeName = "decimal(18,6)")]
+        [Display(Name = "Costo")]
         public Nullable<decimal> costo { get; set; }
+
+        [Required(ErrorMessage = "El Estado es requerido")]
+        [Display(Name = "Estado")]
         public string estado { get; set; }
+
+        [Required(ErrorMessage = "El Tipo es requerido")]
+        [Display(Name = "Tipo")]
         public string tipo { get; set; }
+
+        [Required(ErrorMessage = "El Alumno es requerido")]
+        [Display(Name = "Alumno")]
         public Nullable<int> idalumno { get; set; }
+
+        [Required(ErrorMessage = "La Materia es requerida")]
+        [Display(Name = "Materia")]
         public Nullable<int> idmateria { get; set; }
     
         public virtual Alumno Alumno { get; set; }
