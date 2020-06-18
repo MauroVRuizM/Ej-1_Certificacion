@@ -84,5 +84,13 @@ namespace BEUEjercicio.Transactions
             Entities db = new Entities();
             return db.Alumnoes.ToList();
         }
+
+        public static List<Alumno> ListToNames()
+        {
+            Entities db = new Entities();
+            List<Alumno> resultado = new List<Alumno>();
+            db.Alumnoes.ToList().ForEach(x => resultado.Add(new Alumno { nombres = x.nombres + " " + x.apellidos, idalumno = x.idalumno }));
+            return resultado;
+        }
     }
 }

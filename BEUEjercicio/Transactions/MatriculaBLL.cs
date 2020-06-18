@@ -22,6 +22,9 @@ namespace BEUEjercicio.Transactions
                 {
                     try
                     {
+                        Materia mt = db.Materias.Find(m.idmateria);
+                        setUp(m, mt);
+                        
                         db.Matriculas.Add(m);
                         db.SaveChanges();
                         transaction.Commit();
@@ -43,6 +46,8 @@ namespace BEUEjercicio.Transactions
                 {
                     try
                     {
+                        Materia mt = db.Materias.Find(matricula.idmateria);
+                        setUp(matricula, mt);
                         db.Matriculas.Attach(matricula);
                         db.Entry(matricula).State = System.Data.Entity.EntityState.Modified;
                         db.SaveChanges();
@@ -84,5 +89,27 @@ namespace BEUEjercicio.Transactions
             Entities db = new Entities();
             return db.Matriculas.ToList();
         }
+
+        private static void setUp(Matricula m, Materia mt)
+        {
+            m.fecha = DateTime.Now;
+            m.estado = "1"; //Creada
+            if (m.tipo.Equals("P"))
+            {
+                m.costo = 0;
+            }
+            else
+            {
+                if (m.tipo.Equals("S"))
+                {
+                    m.costo = (decimal)(12.25 * mt.creditos);
+                }
+                else
+                {
+                    m.costo = (decimal)(24.50 * mt.creditos);
+                }
+            }
+        }
+
     }
 }

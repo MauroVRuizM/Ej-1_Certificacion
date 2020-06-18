@@ -24,7 +24,7 @@ namespace BEUEjercicio
         [ScaffoldColumn(false)]
         public int idarea { get; set; }
 
-        [Display(Name = "Area")]
+        [Display(Name = "Área")]
         public string nombre { get; set; }
 
         [Display(Name = "Coordinador")]

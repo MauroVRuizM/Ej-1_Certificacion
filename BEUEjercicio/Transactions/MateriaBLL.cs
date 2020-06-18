@@ -84,5 +84,13 @@ namespace BEUEjercicio.Transactions
             Entities db = new Entities();
             return db.Materias.ToList();
         }
+
+        public static List<Materia> ListToNames()
+        {
+            Entities db = new Entities();
+            List<Materia> resultado = new List<Materia>();
+            db.Materias.ToList().ForEach(x => resultado.Add(new Materia { nombre = x.nrc + " - " + x.nombre, idmateria = x.idmateria }));
+            return resultado;
+        }
     }
 }

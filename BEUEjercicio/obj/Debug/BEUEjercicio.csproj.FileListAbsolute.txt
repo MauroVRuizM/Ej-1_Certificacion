@@ -9,4 +9,3 @@ C:\Users\USER\Desktop\Programas Mauro\RepositorioTemporal\Ej-1_Certificacion\BEU
 C:\Users\USER\Desktop\Programas Mauro\RepositorioTemporal\Ej-1_Certificacion\BEUEjercicio\obj\Debug\BEUEjercicio.csproj.CopyComplete
 C:\Users\USER\Desktop\Programas Mauro\RepositorioTemporal\Ej-1_Certificacion\BEUEjercicio\obj\Debug\BEUEjercicio.dll
 C:\Users\USER\Desktop\Programas Mauro\RepositorioTemporal\Ej-1_Certificacion\BEUEjercicio\obj\Debug\BEUEjercicio.pdb
-C:\Users\USER\Desktop\Programas Mauro\RepositorioTemporal\Ej-1_Certificacion\BEUEjercicio\obj\Debug\BEUEjercicio.csprojAssemblyReference.cache

@@ -16,7 +16,7 @@ namespace PryPractica.Controllers
         // GET: Materias
         public ActionResult Index()
         {
-            ViewBag.Title = "Listado";
+            ViewBag.Title = "Listado de Materias";
             return View(MateriaBLL.List());
         }
 
@@ -38,7 +38,7 @@ namespace PryPractica.Controllers
         // GET: Materias/Create
         public ActionResult Create()
         {
-            ViewBag.idarea = new SelectList(AreaBLL.List(), "idarea", "nombre", "coordinador");
+            ViewBag.idarea = new SelectList(AreaBLL.List(), "idarea", "nombre");
             return View();
         }
 

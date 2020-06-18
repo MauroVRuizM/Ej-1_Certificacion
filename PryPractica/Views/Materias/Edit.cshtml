@@ -36,13 +36,13 @@
         <div class="form-group">
             @Html.LabelFor(model => model.creditos, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.creditos, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.creditos, new { htmlAttributes = new { @class = "form-control", @type = "number", @min = "2", @max = "10", @step = "1", @value = "2" } })
                 @Html.ValidationMessageFor(model => model.creditos, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.idarea, "idarea", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.idarea, "Área", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("idarea", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.idarea, "", new { @class = "text-danger" })

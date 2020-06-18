@@ -29,8 +29,8 @@ namespace BEUEjercicio
         [Display(Name = "Nombre")]
         public string nombre { get; set; }
 
-        [DataType(DataType.PhoneNumber)]
-        [Required(ErrorMessage = "El NRC es requerido")]
+        [DataType(DataType.Text)]
+        [Required(ErrorMessage = "El NRC es requerido"), MaxLength(4)]
         [Display(Name = "NRC")]
         public string nrc { get; set; }
 
@@ -46,5 +46,10 @@ namespace BEUEjercicio
         public virtual Area Area { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Matricula> Matriculas { get; set; }
+
+        public override string ToString()
+        {
+            return nrc + " - " + nombre;
+        }
     }
 }

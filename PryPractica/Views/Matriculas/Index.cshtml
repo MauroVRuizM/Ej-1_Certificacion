@@ -9,28 +9,30 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.fecha)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.costo)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.estado)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.tipo)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.idalumno)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.idmateria)
-        </th>
-        <th></th>
-    </tr>
+<table class="table table-hover">
+    <thead class="bg-primary">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.fecha)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.costo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.estado)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.tipo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Alumno.nombres)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Materia.nombre)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
 
 @foreach (var item in Model) {
     <tr>
@@ -43,19 +45,58 @@
         <td>
             @Html.DisplayFor(modelItem => item.estado)
         </td>
+        
+        @if (item.tipo.Equals("P"))
+        {
+            <td>@Html.Label("Primera", htmlAttributes: new { @class = "h5 label label-success" })</td>
+        }
+        else
+        {
+            if (item.tipo.Equals("S"))
+            {
+                <td>@Html.Label("Segunda", htmlAttributes: new { @class = "h5 label label-warning" })</td>
+            }
+            else
+            {
+                <td>@Html.Label("Tercera", htmlAttributes: new { @class = "h5 label label-danger" })</td>
+            }
+        }
+        
         <td>
-            @Html.DisplayFor(modelItem => item.tipo)
+            @item.Alumno.ToString()
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Alumno.nombres)
+            @item.Materia.ToString()
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Materia.nombre)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.idmatricula }) |
-            @Html.ActionLink("Details", "Details", new { id=item.idmatricula }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.idmatricula })
+            <div class="btn-group">
+                <a href="~/Matriculas/Edit/@item.idmatricula" style="text-decoration:none;">
+                    <svg class="bi bi-pencil-square" width="2em" height="2em" viewBox="0 0 16 16" fill="#a569bd" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+                        <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
+                    </svg>
+                </a>
+
+                <a href="~/Matriculas/Details/@item.idmatricula" style="text-decoration:none;">
+                    <svg class="bi bi-card-list" width="2em" height="2em" viewBox="0 0 16 16" fill="#5dade2" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" d="M14.5 3h-13a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h13a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13z" />
+                        <path fill-rule="evenodd" d="M5 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 5 8zm0-2.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm0 5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5z" />
+                        <circle cx="3.5" cy="5.5" r=".5" />
+                        <circle cx="3.5" cy="8" r=".5" />
+                        <circle cx="3.5" cy="10.5" r=".5" />
+                    </svg>
+                </a>
+
+                <a href="~/Matriculas/Delete/@item.idmatricula" style="text-decoration:none;">
+                    <svg class="bi bi-trash" width="2em" height="2em" viewBox="0 0 16 16" fill="#ec7063" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
+                        <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
+                    </svg>
+                </a>
+                @*@Html.ActionLink(" ", "Edit", new { id = item.idmatricula }, htmlAttributes: new { @class = "btn btn-sm btn-warning glyphicon glyphicon-pencil", @title = "Editar" })
+        @Html.ActionLink("Details", "Details", new { id = item.idmatricula }, htmlAttributes: new { @class = "btn btn-sm btn-primary glyphicon glyphicon-search", @title = "Ver" })
+        @Html.ActionLink("Delete", "Delete", new { id = item.idmatricula }, htmlAttributes: new { @class = "btn btn-sm btn-danger glyphicon glyphicon-trash", @title = "Borrar" })*@
+            </div>
         </td>
     </tr>
 }

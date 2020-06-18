@@ -7,7 +7,6 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using BEUEjercicio;
-using BEUEjercicio.Utils;
 using BEUEjercicio.Transactions;
 
 namespace PryPractica.Controllers
@@ -17,7 +16,7 @@ namespace PryPractica.Controllers
         // GET: Matriculas
         public ActionResult Index()
         {
-            ViewBag.Title = "Listado";
+            ViewBag.Title = "Listado de Matrículas";
             return View(MatriculaBLL.List());
         }
 
@@ -39,12 +38,9 @@ namespace PryPractica.Controllers
         // GET: Matriculas/Create
         public ActionResult Create()
         {
-            var tipo = Enum.GetValues(typeof(Tipo)).Cast<Tipo>().Select(v => v).ToList();
-            ViewBag.tipo = new SelectList(tipo, "tipo");
-            var estado = Enum.GetValues(typeof(Estados)).Cast<Estados>().Select(v => v).ToList();
-            ViewBag.estado = new SelectList(estado, "estado");
-            ViewBag.idalumno = new SelectList(AlumnoBLL.List(), "idalumno", "nombres");
-            ViewBag.idmateria = new SelectList(MateriaBLL.List(), "idmateria", "nombre");
+            ViewBag.tipo = new SelectList(new List<string> { "Primera", "Segunda", "Tercera" });
+            ViewBag.idalumno = new SelectList(AlumnoBLL.ListToNames(), "idalumno", "nombres");
+            ViewBag.idmateria = new SelectList(MateriaBLL.ListToNames(), "idmateria", "nombre");
             return View();
         }
 
@@ -53,7 +49,7 @@ namespace PryPractica.Controllers
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "idmatricula,fecha,costo,estado,tipo,idalumno,idmateria")] Matricula matricula)
+        public ActionResult Create([Bind(Include = "idmatricula,costo,tipo,idalumno,idmateria")] Matricula matricula)
         {
             if (ModelState.IsValid)
             {
@@ -61,8 +57,8 @@ namespace PryPractica.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.idalumno = new SelectList(AlumnoBLL.List(), "idalumno", "nombres", matricula.idalumno);
-            ViewBag.idmateria = new SelectList(MateriaBLL.List(), "idmateria", "nombre", matricula.idmateria);
+            ViewBag.idalumno = new SelectList(AlumnoBLL.ListToNames(), "idalumno", "nombres", matricula.idalumno);
+            ViewBag.idmateria = new SelectList(MateriaBLL.ListToNames(), "idmateria", "nombre", matricula.idmateria);
             return View(matricula);
         }
 
@@ -78,8 +74,8 @@ namespace PryPractica.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.idalumno = new SelectList(AlumnoBLL.List(), "idalumno", "nombres", matricula.idalumno);
-            ViewBag.idmateria = new SelectList(MateriaBLL.List(), "idmateria", "nombre", matricula.idmateria);
+            ViewBag.idalumno = new SelectList(AlumnoBLL.ListToNames(), "idalumno", "nombres", matricula.idalumno);
+            ViewBag.idmateria = new SelectList(MateriaBLL.ListToNames(), "idmateria", "nombre", matricula.idmateria);
             return View(matricula);
         }
 
@@ -88,15 +84,15 @@ namespace PryPractica.Controllers
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "idmatricula,fecha,costo,estado,tipo,idalumno,idmateria")] Matricula matricula)
+        public ActionResult Edit([Bind(Include = "idmatricula,tipo,idalumno,idmateria")] Matricula matricula)
         {
             if (ModelState.IsValid)
             {
                 MatriculaBLL.Update(matricula);
                 return RedirectToAction("Index");
             }
-            ViewBag.idalumno = new SelectList(AlumnoBLL.List(), "idalumno", "nombres", matricula.idalumno);
-            ViewBag.idmateria = new SelectList(MateriaBLL.List(), "idmateria", "nombre", matricula.idmateria);
+            ViewBag.idalumno = new SelectList(AlumnoBLL.ListToNames(), "idalumno", "nombres", matricula.idalumno);
+            ViewBag.idmateria = new SelectList(MateriaBLL.ListToNames(), "idmateria", "nombre", matricula.idmateria);
             return View(matricula);
         }
 

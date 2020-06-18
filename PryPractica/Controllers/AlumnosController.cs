@@ -16,6 +16,7 @@ namespace PryPractica.Controllers
         // GET: Alumnos
         public ActionResult Index()
         {
+            ViewBag.Title = "Listado de alumnos registrados";
             return View(AlumnoBLL.List());
         }
 
