@@ -9,6 +9,7 @@
 
 namespace BEUEjercicio
 {
+    using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
@@ -45,10 +46,13 @@ namespace BEUEjercicio
 
         [Display(Name = "Materia")]
         public Nullable<int> idmateria { get; set; }
-    
+
+        [JsonIgnore]
         public virtual Alumno Alumno { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Calificacion> Calificacions { get; set; }
+        
+        [JsonIgnore]
         public virtual Materia Materia { get; set; }
     }
 }
