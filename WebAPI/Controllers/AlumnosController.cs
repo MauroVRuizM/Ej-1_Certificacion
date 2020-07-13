@@ -12,7 +12,7 @@ using WebAPI.Models;
 
 namespace WebAPI.Controllers
 {
-    [EnableCors(origins: "http://localhost:4200", headers: "*", methods: "*")]
+    [EnableCors(origins: "http://localhost:44398", headers: "*", methods: "*")]
     public class AlumnosController : ApiController
     {
         [ResponseType(typeof(Alumno))]
