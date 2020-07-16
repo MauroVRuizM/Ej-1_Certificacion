@@ -12,34 +12,42 @@ using WebAPI.Models;
 
 namespace WebAPI.Controllers
 {
-    [EnableCors(origins: "http://localhost:44398", headers: "*", methods: "*")]
+    [EnableCors(origins: "http://localhost:4200", headers: "*", methods: "*")]
     public class AlumnosController : ApiController
     {
-        [ResponseType(typeof(Alumno))]
+
+        // POST api/Alumnos
+        public IHttpActionResult Post(Alumno alumno)
+        {
+            try
+            {
+                AlumnoBLL.Create(alumno);
+                return Content(HttpStatusCode.Created, "Alumno creado correctamente");
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+
         public IHttpActionResult Get()
         {
             List<Alumno> todos = AlumnoBLL.List();
-            return Json(todos);
+            return Content(HttpStatusCode.OK, todos);
         }
 
-        [ResponseType(typeof(Alumno))]
         public IHttpActionResult Delete(int id)
         {
-            Message result = new Message();
             try
             {
                 AlumnoBLL.Delete(id);
-                result.title = "¡Correcto!";
-                result.text = "El alumno fue eliminado correctamente";
-                result.icon = "success";
+                return Ok("Alumno eliminado correctamente");
             }
-            catch (Exception ex) {
-                result.title = "¡Error!";
-                result.text = "Hubo un error al intentar eliminar ";
-                result.console = ex.Message;
-                result.icon = "error";
-            }            
-            return Json(result);
+            catch (Exception ex)
+            {
+                return Content(HttpStatusCode.BadRequest, ex);
+            }
         }
     }
 }
