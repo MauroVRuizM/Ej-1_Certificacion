@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, SimpleChanges } from '@angular/core';
 import { faListAlt, faEye, faPencilAlt, faTrash } from '@fortawesome/free-solid-svg-icons';
-import { Alumno } from '../../models/alumno';
-import { AlumnoService } from '../../services/alumno.service';
+import { Alumno } from 'src/app/models/alumno';
+import { AlumnoService } from 'src/app/services/alumno.service';
 import swal from 'sweetalert2';
 
 @Component({
@@ -16,6 +16,9 @@ export class ALumnoListComponent implements OnInit {
   faPencilAlt = faPencilAlt;
   faTrash = faTrash;
   alumnos: Alumno[];
+  @Output() alumnoToEdit = new EventEmitter<Alumno>();
+  @Input() flagToReload;
+  @Output() reloadComplete = new EventEmitter<Boolean>();
 
   constructor(private alumnoService: AlumnoService) { }
 
@@ -23,10 +26,24 @@ export class ALumnoListComponent implements OnInit {
     this.list();
   }
 
+  ngOnChanges(changes: SimpleChanges) {
+    if(changes.flagToReload.currentValue){
+      if(this.flagToReload){
+        this.list();
+      }
+    }
+  }
+
+
+  update(a:Alumno) :void {
+    console.log(a);
+    this.alumnoToEdit.emit(a);
+  }
+
   delete(a:Alumno) :void {
     swal.fire({
       title: '¿Está seguro de continuar?',
-      text: "El registro de " + a.nombres + " " + a.apellidos + " será eliminado.",
+      text: 'El registro de ' + a.nombres + ' ' + a.apellidos + ' será eliminado.',
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
@@ -36,15 +53,16 @@ export class ALumnoListComponent implements OnInit {
     }).then((result) => {
       if (result.value) {
         this.alumnoService.delete(a).subscribe(
-          result => console.log(result)       
-        )       
+          result => console.log(result)
+        );
       }
-    })
+    });
   }
 
-  list() : void {
+  list(): void {
     this.alumnoService.list().subscribe(result => {
       this.alumnos = result;
+      this.reloadComplete.emit(true);
     });
   }
 

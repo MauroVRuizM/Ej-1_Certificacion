@@ -8,7 +8,6 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Cors;
 using System.Web.Http.Description;
-using WebAPI.Models;
 
 namespace WebAPI.Controllers
 {
@@ -30,11 +29,49 @@ namespace WebAPI.Controllers
             }
         }
 
+        public IHttpActionResult Put(Alumno alumno)
+        {
+            try
+            {
+                AlumnoBLL.Update(alumno);
+                return Content(HttpStatusCode.OK, "Alumno actualizado correctamente");
+
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
 
         public IHttpActionResult Get()
         {
-            List<Alumno> todos = AlumnoBLL.List();
-            return Content(HttpStatusCode.OK, todos);
+            try
+            {
+                List<Alumno> todos = AlumnoBLL.List();
+                return Content(HttpStatusCode.OK, todos);
+            }
+            catch (Exception ex)
+            {
+                return Content(HttpStatusCode.BadRequest, ex);
+            }
+        }
+
+        public IHttpActionResult Get(int id)
+        {
+            try
+            {
+                Alumno result = AlumnoBLL.Get(id);
+                if (result == null)
+                {
+                    return NotFound();
+                }
+                return Content(HttpStatusCode.OK, result);
+            }
+            catch (Exception ex)
+            {
+                return Content(HttpStatusCode.BadRequest, ex);
+            }
         }
 
         public IHttpActionResult Delete(int id)
