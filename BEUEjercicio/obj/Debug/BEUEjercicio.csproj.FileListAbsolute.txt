@@ -25,3 +25,4 @@ D:\Users\dell\Desktop\Espe\Software Nivel 6\Certificación I\Repositorio\Ej-1_Ce
 D:\Users\dell\Desktop\Espe\Software Nivel 6\Certificación I\Repositorio\Ej-1_Certificacion\BEUEjercicio\obj\Debug\BEUEjercicio.csproj.CopyComplete
 D:\Users\dell\Desktop\Espe\Software Nivel 6\Certificación I\Repositorio\Ej-1_Certificacion\BEUEjercicio\obj\Debug\BEUEjercicio.dll
 D:\Users\dell\Desktop\Espe\Software Nivel 6\Certificación I\Repositorio\Ej-1_Certificacion\BEUEjercicio\obj\Debug\BEUEjercicio.pdb
+D:\Users\dell\Desktop\Espe\Software Nivel 6\Certificación I\Repositorio\Ej-1_Certificacion\BEUEjercicio\obj\Debug\BEUEjercicio.csprojAssemblyReference.cache

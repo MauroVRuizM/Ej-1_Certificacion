@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Alumno } from '../models/alumno';
 import {Observable } from 'rxjs';
-import { isFunction } from 'util';
 import { retry } from 'rxjs/operators';
 
 @Injectable({

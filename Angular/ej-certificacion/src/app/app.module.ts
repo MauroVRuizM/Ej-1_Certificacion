@@ -13,10 +13,12 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { AlumnoService } from './services/alumno.service';
 import { ServiceInterceptor } from './services/service.interceptor';
 import { registerLocaleData } from '@angular/common';
+
 import localeEs from '@angular/common/locales/es';
 registerLocaleData(localeEs);
 
 import { ReactiveFormsModule } from '@angular/forms';
+import { MateriaformComponent } from './components/materiaform/materiaform.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     ALumnoListComponent,
     AlumnoCardComponent,
     MasmasPipe,
-    SexdescPipe
+    MateriaformComponent,
+    SexdescPipe,
+    MateriaformComponent
   ],
   imports: [
     BrowserModule,

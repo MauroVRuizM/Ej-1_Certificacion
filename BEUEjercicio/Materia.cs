@@ -12,6 +12,7 @@ namespace BEUEjercicio
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
+    using Newtonsoft.Json;
 
     public partial class Materia
     {
@@ -42,9 +43,12 @@ namespace BEUEjercicio
         [Required(ErrorMessage = "El Área es requerida")]
         [Display(Name = "Área")]
         public Nullable<int> idarea { get; set; }
-    
+
+        [JsonIgnore]
         public virtual Area Area { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+
+        [JsonIgnore]
         public virtual ICollection<Matricula> Matriculas { get; set; }
 
         public override string ToString()

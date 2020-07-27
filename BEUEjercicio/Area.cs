@@ -12,6 +12,7 @@ namespace BEUEjercicio
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
+    using Newtonsoft.Json;
 
     public partial class Area
     {
@@ -21,7 +22,6 @@ namespace BEUEjercicio
             this.Materias = new HashSet<Materia>();
         }
 
-        [ScaffoldColumn(false)]
         public int idarea { get; set; }
 
         [Display(Name = "Área")]
@@ -31,6 +31,8 @@ namespace BEUEjercicio
         public string coordinador { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+
+        [JsonIgnore]
         public virtual ICollection<Materia> Materias { get; set; }
     }
 }

@@ -82,7 +82,7 @@ namespace BEUEjercicio.Transactions
         public static List<Alumno> List()
         {
             Entities db = new Entities();
-            return db.Alumnoes.ToList();
+            return db.Alumnoes.OrderBy(x => x.apellidos).ToList();
         }
 
         public static List<Alumno> ListToNames()
