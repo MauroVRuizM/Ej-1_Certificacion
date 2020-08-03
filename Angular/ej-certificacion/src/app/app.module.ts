@@ -19,6 +19,7 @@ registerLocaleData(localeEs);
 
 import { ReactiveFormsModule } from '@angular/forms';
 import { MateriaformComponent } from './components/materiaform/materiaform.component';
+import { MatriculaFormComponent } from './components/matricula-form/matricula-form.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { MateriaformComponent } from './components/materiaform/materiaform.compo
     MasmasPipe,
     MateriaformComponent,
     SexdescPipe,
-    MateriaformComponent
+    MateriaformComponent,
+    MatriculaFormComponent
   ],
   imports: [
     BrowserModule,

@@ -45,4 +45,11 @@ export class AlumnoService {
         retry(1),
       );
   }
+
+  search(criteria: string): Observable<Alumno[]> {
+    return this.http.get<Alumno[]>(this.url.concat('?criteria=').concat(criteria), this.httpOptions)
+      .pipe(
+        retry(1)
+      );
+  }
 }

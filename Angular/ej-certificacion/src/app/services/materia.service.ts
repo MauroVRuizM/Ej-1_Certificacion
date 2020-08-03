@@ -9,7 +9,7 @@ import { retry } from 'rxjs/operators';
 })
 export class MateriaService {
 
-  url : string = "https://localhost:44398/api/Materia";
+  url = 'https://localhost:44398/api/Materia';
 
   httpOptions={
     headers:new HttpHeaders({
