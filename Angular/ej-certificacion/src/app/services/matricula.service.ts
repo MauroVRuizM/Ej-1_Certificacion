@@ -22,9 +22,9 @@ export class MatriculaService {
   constructor(private http: HttpClient) { }
 
   list(id: number): Observable<Matricula[]> {
-    return this.http.get<Matricula[]>(this.url.concat('/') + id, this.httpOptions)
+    return this.http.get<Matricula[]>(this.url.concat("/") + id, this.httpOptions)
       .pipe(
         retry(1)
       );
-  } 
+  }
 }

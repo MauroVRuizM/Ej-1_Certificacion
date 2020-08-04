@@ -1,0 +1,33 @@
+<h3>Listado de Tipos de Beca</h3>
+<table class="table table-hovered">
+    <thead>
+        <tr>
+            <th>N°</th>
+            <th>Tipo</th>
+            <th>Nombre</th>
+            <th>Dirigido a</th>
+            <th>Monto</th>
+            <th>Fecha de Aprobación</th>
+            <th>
+                <button [routerLink]="['/tiposBeca/form']" class="btn btn-info"><fa-icon [icon]="faPlus"></fa-icon>&nbsp;Agregar</button>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of tiposBeca; let i = index">
+            <td>{{ i | masmas }}</td>
+            <td>{{ item.tipo }}</td>
+            <td>{{ item.nombre }}</td>
+            <td>{{ item.persona_objetivo }}</td>
+            <td>{{ item.monto | currency }}</td>
+            <td>{{ item.fecha_aprobacion | date:'longDate' }}</td>
+            <td>
+                <button [routerLink]="['/tiposBeca/card', item.idtipobeca]" class="btn btn-sm btn-info"><fa-icon [icon]="faEye"></fa-icon></button>
+                <button [routerLink]="['/tiposBeca/form', item.idtipobeca]" class="btn btn-sm btn-warning"><fa-icon [icon]="faPencilAlt"></fa-icon></button>
+                <button (click)="delete(item)" class="btn btn-sm btn-danger"><fa-icon [icon]="faTrash"></fa-icon></button>
+            </td>
+        </tr>
+
+    </tbody>
+
+</table>

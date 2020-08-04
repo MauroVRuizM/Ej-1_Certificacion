@@ -58,5 +58,18 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="TiposBeca">
+      <EntityTypeMapping TypeName="Model.TiposBeca">
+        <MappingFragment StoreEntitySet="TiposBeca">
+          <ScalarProperty Name="requisitos" ColumnName="requisitos" />
+          <ScalarProperty Name="fecha_aprobacion" ColumnName="fecha_aprobacion" />
+          <ScalarProperty Name="monto" ColumnName="monto" />
+          <ScalarProperty Name="persona_objetivo" ColumnName="persona_objetivo" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="tipo" ColumnName="tipo" />
+          <ScalarProperty Name="idtipobeca" ColumnName="idtipobeca" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

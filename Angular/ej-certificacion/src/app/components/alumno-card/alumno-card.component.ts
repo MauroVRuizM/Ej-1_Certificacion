@@ -4,8 +4,8 @@ import { AlumnoService } from 'src/app/services/alumno.service';
 import { MatriculaService } from '../../services/matricula.service';
 import { ActivatedRoute } from '@angular/router';
 import { Matricula } from 'src/app/models/matricula';
-
 import { faUser, faIdCard, faCalendar, faMapMarked, faGenderless } from '@fortawesome/free-solid-svg-icons';
+import { MateriaService } from 'src/app/services/materia.service';
 
 @Component({
   selector: 'app-alumno-card',
@@ -19,10 +19,18 @@ export class AlumnoCardComponent implements OnInit {
   faCalendar = faCalendar;
   faMapMarked = faMapMarked;
   faGenderless = faGenderless;
-  alumno: Alumno;
+  alumno: Alumno = new Alumno();
   matriculas: Matricula[];
+  nombreMateria: string;
+  idmateria: number;
 
-  constructor(private alumnoService: AlumnoService, private matriculaService: MatriculaService , private activatedRoute: ActivatedRoute) { }
+  constructor(
+    private alumnoService: AlumnoService,
+    private matriculaService: MatriculaService ,
+    private activatedRoute: ActivatedRoute,
+    private materiaService: MateriaService
+  )
+  { }
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(
@@ -41,7 +49,19 @@ export class AlumnoCardComponent implements OnInit {
 
   listMatriculas(): void {
     this.matriculaService.list(this.alumno.idalumno).subscribe(
-      result => this.matriculas = result
+      result => {
+        console.log(result);
+        this.matriculas = result;
+        result.forEach(element => {
+          this.idmateria = element.idmateria;
+        });
+      },
+      err => console.log(err),
+      () => {
+        this.materiaService.retrieve(this.idmateria).subscribe(res => {
+          this.nombreMateria = res.nombre;
+        });
+      }
     );
   }
 

@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Alumno">
           <Key>
             <PropertyRef Name="idalumno" />
@@ -56,6 +56,18 @@
           <Property Name="tipo" Type="nchar" MaxLength="1" />
           <Property Name="idalumno" Type="int" />
           <Property Name="idmateria" Type="int" />
+        </EntityType>
+        <EntityType Name="TiposBeca">
+          <Key>
+            <PropertyRef Name="idtipobeca" />
+          </Key>
+          <Property Name="idtipobeca" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tipo" Type="varchar" MaxLength="70" />
+          <Property Name="nombre" Type="varchar" MaxLength="70" />
+          <Property Name="persona_objetivo" Type="varchar" MaxLength="50" />
+          <Property Name="monto" Type="decimal" Precision="7" Scale="2" />
+          <Property Name="fecha_aprobacion" Type="date" />
+          <Property Name="requisitos" Type="varchar" MaxLength="200" />
         </EntityType>
         <Association Name="FK_Calificacion_Matricula">
           <End Role="Matricula" Type="Self.Matricula" Multiplicity="0..1" />
@@ -111,6 +123,7 @@
           <EntitySet Name="Calificacion" EntityType="Self.Calificacion" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Materia" EntityType="Self.Materia" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Matricula" EntityType="Self.Matricula" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TiposBeca" EntityType="Self.TiposBeca" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Calificacion_Matricula" Association="Self.FK_Calificacion_Matricula">
             <End Role="Matricula" EntitySet="Matricula" />
             <End Role="Calificacion" EntitySet="Calificacion" />
@@ -128,8 +141,7 @@
             <End Role="Matricula" EntitySet="Matricula" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -263,7 +275,20 @@
             <End Role="Materia" EntitySet="Materias" />
             <End Role="Matricula" EntitySet="Matriculas" />
           </AssociationSet>
+          <EntitySet Name="TiposBeca" EntityType="Model.TiposBeca" />
         </EntityContainer>
+        <EntityType Name="TiposBeca">
+          <Key>
+            <PropertyRef Name="idtipobeca" />
+          </Key>
+          <Property Name="idtipobeca" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tipo" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
+          <Property Name="nombre" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
+          <Property Name="persona_objetivo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="monto" Type="Decimal" Precision="7" Scale="2" />
+          <Property Name="fecha_aprobacion" Type="DateTime" Precision="0" />
+          <Property Name="requisitos" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -327,6 +352,19 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="TiposBeca">
+            <EntityTypeMapping TypeName="Model.TiposBeca">
+              <MappingFragment StoreEntitySet="TiposBeca">
+                <ScalarProperty Name="requisitos" ColumnName="requisitos" />
+                <ScalarProperty Name="fecha_aprobacion" ColumnName="fecha_aprobacion" />
+                <ScalarProperty Name="monto" ColumnName="monto" />
+                <ScalarProperty Name="persona_objetivo" ColumnName="persona_objetivo" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="tipo" ColumnName="tipo" />
+                <ScalarProperty Name="idtipobeca" ColumnName="idtipobeca" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -341,7 +379,7 @@
     <Options>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
-        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />

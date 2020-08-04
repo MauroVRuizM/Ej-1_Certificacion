@@ -130,5 +130,18 @@
       <End Role="Materia" EntitySet="Materias" />
       <End Role="Matricula" EntitySet="Matriculas" />
     </AssociationSet>
+    <EntitySet Name="TiposBeca" EntityType="Model.TiposBeca" />
   </EntityContainer>
+  <EntityType Name="TiposBeca">
+    <Key>
+      <PropertyRef Name="idtipobeca" />
+    </Key>
+    <Property Name="idtipobeca" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="tipo" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
+    <Property Name="nombre" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
+    <Property Name="persona_objetivo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="monto" Type="Decimal" Precision="7" Scale="2" />
+    <Property Name="fecha_aprobacion" Type="DateTime" Precision="0" />
+    <Property Name="requisitos" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+  </EntityType>
 </Schema>

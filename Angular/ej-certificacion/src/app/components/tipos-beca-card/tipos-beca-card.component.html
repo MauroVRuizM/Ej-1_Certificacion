@@ -1,0 +1,26 @@
+<div class="d-flex justify-content-center">
+    <div class="card">
+        <div class="card-header text-center">
+            <div class="card-title">
+                <h3>{{ tiposBeca.tipo }}</h3>
+            </div>
+        </div>
+        <div class="card-body">
+            <fieldset>
+                <label><strong>Nombre:</strong></label>&nbsp;
+                <span>{{ tiposBeca.nombre }}</span><br>
+                <label><strong>Dirigido a:</strong></label>&nbsp;
+                <span>{{ tiposBeca.persona_objetivo }}</span><br>
+                <label><strong>Fecha de aprobación:</strong></label>&nbsp;
+                <span>{{ tiposBeca.fecha_aprobacion | date:'longDate' }}</span><br>
+                <label><strong>Monto:</strong></label>&nbsp;
+                <span>{{ tiposBeca.monto | currency }}</span><br>
+                <label><strong>Requisitos:</strong></label>&nbsp;
+                <span>{{ tiposBeca.requisitos }}</span><br>
+            </fieldset>
+        </div>
+        <div class="card-footer text-center">
+            <button [routerLink]="['/tiposBeca/list']" class="btn btn-primary"><fa-icon [icon]="faListAlt"></fa-icon>&nbsp;Volver</button>
+        </div>
+    </div>
+</div>

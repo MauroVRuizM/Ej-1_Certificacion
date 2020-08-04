@@ -20,6 +20,9 @@ registerLocaleData(localeEs);
 import { ReactiveFormsModule } from '@angular/forms';
 import { MateriaformComponent } from './components/materiaform/materiaform.component';
 import { MatriculaFormComponent } from './components/matricula-form/matricula-form.component';
+import { TiposBecaFormComponent } from './components/tipos-beca-form/tipos-beca-form.component';
+import { TiposBecaCardComponent } from './components/tipos-beca-card/tipos-beca-card.component';
+import { TiposBecaListComponent } from './components/tipos-beca-list/tipos-beca-list.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +35,10 @@ import { MatriculaFormComponent } from './components/matricula-form/matricula-fo
     MateriaformComponent,
     SexdescPipe,
     MateriaformComponent,
-    MatriculaFormComponent
+    MatriculaFormComponent,
+    TiposBecaFormComponent,
+    TiposBecaCardComponent,
+    TiposBecaListComponent
   ],
   imports: [
     BrowserModule,

@@ -52,6 +52,18 @@
     <Property Name="idalumno" Type="int" />
     <Property Name="idmateria" Type="int" />
   </EntityType>
+  <EntityType Name="TiposBeca">
+    <Key>
+      <PropertyRef Name="idtipobeca" />
+    </Key>
+    <Property Name="idtipobeca" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="tipo" Type="varchar" MaxLength="70" />
+    <Property Name="nombre" Type="varchar" MaxLength="70" />
+    <Property Name="persona_objetivo" Type="varchar" MaxLength="50" />
+    <Property Name="monto" Type="decimal" Precision="7" Scale="2" />
+    <Property Name="fecha_aprobacion" Type="date" />
+    <Property Name="requisitos" Type="varchar" MaxLength="200" />
+  </EntityType>
   <Association Name="FK_Calificacion_Matricula">
     <End Role="Matricula" Type="Self.Matricula" Multiplicity="0..1" />
     <End Role="Calificacion" Type="Self.Calificacion" Multiplicity="*" />
@@ -106,6 +118,7 @@
     <EntitySet Name="Calificacion" EntityType="Self.Calificacion" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Materia" EntityType="Self.Materia" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Matricula" EntityType="Self.Matricula" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TiposBeca" EntityType="Self.TiposBeca" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK_Calificacion_Matricula" Association="Self.FK_Calificacion_Matricula">
       <End Role="Matricula" EntitySet="Matricula" />
       <End Role="Calificacion" EntitySet="Calificacion" />

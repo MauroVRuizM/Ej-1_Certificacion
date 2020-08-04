@@ -4,5 +4,6 @@ export class Matricula {
     fecha: string;
     tipo: string;
     costo: number;
+    idmateria: number;
     materia: Materia;
 }

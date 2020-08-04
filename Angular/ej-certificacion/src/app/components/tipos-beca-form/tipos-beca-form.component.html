@@ -1,0 +1,41 @@
+<div class="d-flex justify-content-center">
+    <h3>{{ title }}</h3>
+</div>
+<br>
+<div class="d-flex justify-content-around">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()" class="user">
+        <fieldset>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label><strong>Tipo:</strong></label>
+                    <input formControlName="tipo" [(ngModel)]="tipoBeca.tipo" type="text" class="form-control" /><br>
+                </div>
+                <div class="form-group col-md-6">
+                    <label><strong>Nombre:</strong></label>
+                    <input formControlName="nombre" [(ngModel)]="tipoBeca.nombre" type="text" class="form-control" /><br>
+                </div>
+            </div>
+            <div class="form-group">
+                <label><strong>Dirigido a:</strong></label>
+                <input formControlName="persona_objetivo" [(ngModel)]="tipoBeca.persona_objetivo" type="text" class="form-control" /><br>
+            </div>
+            <div class="form-group">
+                <label><strong>Fecha de aprobación:</strong></label>
+                <input formControlName="fecha_aprobacion" [(ngModel)]="tipoBeca.fecha_aprobacion" type="date" class="form-control" /><br>
+            </div>
+            <div class="form-group">
+                <label><strong>Monto</strong>:</label>
+                <input formControlName="monto" [(ngModel)]="tipoBeca.monto" type="number" class="form-control" min="1" max="9999999" /><br>
+            </div>
+            <div class="form-group">
+                <label><strong>Requisitos:</strong></label>
+                <textarea formControlName="requisitos" [(ngModel)]="tipoBeca.requisitos" type="text" class="form-control"></textarea>
+            </div>
+            <div class="d-flex justify-content-around">
+                <button type="submit" class="btn btn-outline-success">Guardar</button><br>
+                <button [routerLink]="['/tiposBeca/list']" type="reset" class="btn btn-outline-danger">Cancelar</button><br>
+            </div>
+        </fieldset>
+    </form>
+</div>
+<br> <br>

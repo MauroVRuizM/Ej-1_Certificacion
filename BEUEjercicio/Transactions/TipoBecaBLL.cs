@@ -6,16 +6,15 @@ using System.Threading.Tasks;
 
 namespace BEUEjercicio.Transactions
 {
-    public class MatriculaBLL
+    public class TiposBecaBLL
     {
-        public static Matricula Get(int? id)
+        public static TiposBeca Get(int? id)
         {
             Entities db = new Entities();
-            return db.Matriculas.Find(id);
+            return db.TiposBeca.Find(id);
         }
 
-
-        public static void Create(Matricula m)
+        public static void Create(TiposBeca a)
         {
             using (Entities db = new Entities())
             {
@@ -23,10 +22,7 @@ namespace BEUEjercicio.Transactions
                 {
                     try
                     {
-                        Materia mt = db.Materias.Find(m.idmateria);
-                        Config(m, mt);
-                        
-                        db.Matriculas.Add(m);
+                        db.TiposBeca.Add(a);
                         db.SaveChanges();
                         transaction.Commit();
                     }
@@ -39,7 +35,7 @@ namespace BEUEjercicio.Transactions
             }
         }
 
-        public static void Update(Matricula matricula)
+        public static void Update(TiposBeca tipobeca)
         {
             using (Entities db = new Entities())
             {
@@ -47,10 +43,8 @@ namespace BEUEjercicio.Transactions
                 {
                     try
                     {
-                        Materia mt = db.Materias.Find(matricula.idmateria);
-                        Config(matricula, mt);
-                        db.Matriculas.Attach(matricula);
-                        db.Entry(matricula).State = System.Data.Entity.EntityState.Modified;
+                        db.TiposBeca.Attach(tipobeca);
+                        db.Entry(tipobeca).State = System.Data.Entity.EntityState.Modified;
                         db.SaveChanges();
                         transaction.Commit();
                     }
@@ -71,8 +65,8 @@ namespace BEUEjercicio.Transactions
                 {
                     try
                     {
-                        Matricula matricula = db.Matriculas.Find(id);
-                        db.Entry(matricula).State = System.Data.Entity.EntityState.Deleted;
+                        TiposBeca tipobeca = db.TiposBeca.Find(id);
+                        db.Entry(tipobeca).State = System.Data.Entity.EntityState.Deleted;
                         db.SaveChanges();
                         transaction.Commit();
                     }
@@ -85,38 +79,10 @@ namespace BEUEjercicio.Transactions
             }
         }
 
-        public static List<Matricula> List()
+        public static List<TiposBeca> List()
         {
             Entities db = new Entities();
-            return db.Matriculas.ToList();
+            return db.TiposBeca.ToList();
         }
-
-        public static List<Matricula> List(int id)
-        {
-            Entities db = new Entities();
-            return db.Matriculas.Where(x => x.Alumno.idalumno == id).ToList();
-        }
-
-        private static void Config(Matricula m, Materia mt)
-        {
-            m.fecha = DateTime.Now;
-            m.estado = "1"; //Creada
-            if (m.tipo.Equals("P"))
-            {
-                m.costo = 0;
-            }
-            else
-            {
-                if (m.tipo.Equals("S"))
-                {
-                    m.costo = (decimal)(12.25 * mt.creditos);
-                }
-                else
-                {
-                    m.costo = (decimal)(24.50 * mt.creditos);
-                }
-            }
-        }
-
     }
 }
