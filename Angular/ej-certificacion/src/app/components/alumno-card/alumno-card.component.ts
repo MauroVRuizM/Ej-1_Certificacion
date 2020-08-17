@@ -19,16 +19,14 @@ export class AlumnoCardComponent implements OnInit {
   faCalendar = faCalendar;
   faMapMarked = faMapMarked;
   faGenderless = faGenderless;
+
   alumno: Alumno = new Alumno();
   matriculas: Matricula[];
-  nombreMateria: string;
-  idmateria: number;
 
   constructor(
     private alumnoService: AlumnoService,
     private matriculaService: MatriculaService ,
     private activatedRoute: ActivatedRoute,
-    private materiaService: MateriaService
   )
   { }
 
@@ -52,15 +50,6 @@ export class AlumnoCardComponent implements OnInit {
       result => {
         console.log(result);
         this.matriculas = result;
-        result.forEach(element => {
-          this.idmateria = element.idmateria;
-        });
-      },
-      err => console.log(err),
-      () => {
-        this.materiaService.retrieve(this.idmateria).subscribe(res => {
-          this.nombreMateria = res.nombre;
-        });
       }
     );
   }

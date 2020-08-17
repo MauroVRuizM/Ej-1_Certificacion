@@ -88,6 +88,7 @@ namespace BEUEjercicio.Transactions
         public static List<Matricula> List()
         {
             Entities db = new Entities();
+            decimal total = (decimal)db.Matriculas.Sum(x => x.costo);
             return db.Matriculas.ToList();
         }
 

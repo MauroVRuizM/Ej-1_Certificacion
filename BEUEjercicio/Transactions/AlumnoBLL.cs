@@ -85,6 +85,12 @@ namespace BEUEjercicio.Transactions
             return db.Alumnoes.OrderBy(x => x.apellidos).ToList();
         }
 
+        public static List<Alumno> List(string criterio)
+        {
+            Entities db = new Entities();
+            return db.Alumnoes.Where(x => x.cedula.Contains(criterio)).ToList();
+        }
+
         public static List<Alumno> ListToNames()
         {
             Entities db = new Entities();

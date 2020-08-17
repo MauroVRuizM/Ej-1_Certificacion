@@ -74,6 +74,20 @@ namespace WebAPI.Controllers
             }
         }
 
+        public IHttpActionResult Get(string criteria)
+        {
+            try
+            {
+                List<Alumno> todos = AlumnoBLL.List(criteria);
+                return Content(HttpStatusCode.OK, todos);
+            }
+            catch (Exception ex)
+            {
+                return Content(HttpStatusCode.BadRequest, ex);
+            }
+        }
+
+
         public IHttpActionResult Delete(int id)
         {
             try

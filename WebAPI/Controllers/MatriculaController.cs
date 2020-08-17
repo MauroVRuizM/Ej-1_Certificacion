@@ -14,12 +14,14 @@ namespace WebAPI.Controllers
     [EnableCors(origins: "http://localhost:4200", headers: "*", methods: "*")]
     public class MatriculaController : ApiController
     {
-        public IHttpActionResult Post(Alumno alumno)
+        public IHttpActionResult Post(Matricula matricula)
         {
             try
             {
-                AlumnoBLL.Create(alumno);
-                return Content(HttpStatusCode.Created, "Alumno creado correctamente");
+                matricula.idmateria = matricula.Materia.idmateria;
+                matricula.idalumno = matricula.Alumno.idalumno;
+                MatriculaBLL.Create(matricula);
+                return Content(HttpStatusCode.Created, "Matricula creada correctamente");
             }
             catch (Exception ex)
             {

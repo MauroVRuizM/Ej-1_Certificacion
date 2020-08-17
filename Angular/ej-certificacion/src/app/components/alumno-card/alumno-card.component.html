@@ -79,7 +79,7 @@
             <tbody>
                 <tr *ngFor="let item of matriculas; let i = index">
                     <td>{{i | masmas}}</td>
-                    <td>{{ nombreMateria }}</td>
+                    <td>{{ item.Materia.nombre }}</td>
                     <td>{{ item.fecha | date:'dd/MMM/yyyy HH:mm' }}</td>
                     <td>{{ item.tipo }}</td>
                     <td>{{ item.costo | currency }}</td>
