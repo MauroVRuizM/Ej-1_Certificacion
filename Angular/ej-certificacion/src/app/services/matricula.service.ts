@@ -10,12 +10,12 @@ import { retry } from 'rxjs/operators';
 })
 export class MatriculaService {
 
-  url : string = 'https://localhost:44398/api/Matricula';
+  url  = 'https://localhost:44398/api/Matricula';
 
-  httpOptions={
-    headers:new HttpHeaders({
+  httpOptions = {
+    headers: new HttpHeaders({
       'Content-Type': 'application/json',
-      'Accept': 'application/json'
+      Accept: 'application/json'
     })
   };
 
@@ -23,10 +23,7 @@ export class MatriculaService {
 
   save(a: Matricula): Observable<any> {
     const matriculaBody = JSON.stringify(a);
-    if (a.idmatricula === undefined){
-      return this.http.post<any>(this.url, matriculaBody, this.httpOptions);
-    }
-    return this.http.put<any>(this.url, matriculaBody, this.httpOptions);
+    return this.http.post<any>(this.url, matriculaBody, this.httpOptions);
   }
 
   list(id: number): Observable<Matricula[]> {

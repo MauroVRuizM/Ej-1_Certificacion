@@ -32,6 +32,7 @@
     <Property Name="unidad" Type="String" MaxLength="1" FixedLength="true" Unicode="true" />
     <Property Name="idmatricula" Type="Int32" />
     <NavigationProperty Name="Matricula" Relationship="Self.FK_Calificacion_Matricula" FromRole="Calificacion" ToRole="Matricula" />
+    <NavigationProperty Name="Aporte" Relationship="Model.FK_Aporte_Calificacion" FromRole="Calificacion" ToRole="Aporte" />
   </EntityType>
   <EntityType Name="Materia">
     <Key>
@@ -131,6 +132,11 @@
       <End Role="Matricula" EntitySet="Matriculas" />
     </AssociationSet>
     <EntitySet Name="TiposBeca" EntityType="Model.TiposBeca" />
+    <EntitySet Name="Aporte" EntityType="Model.Aporte" />
+    <AssociationSet Name="FK_Aporte_Calificacion" Association="Model.FK_Aporte_Calificacion">
+      <End Role="Calificacion" EntitySet="Calificacions" />
+      <End Role="Aporte" EntitySet="Aporte" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="TiposBeca">
     <Key>
@@ -144,4 +150,28 @@
     <Property Name="fecha_aprobacion" Type="DateTime" Precision="0" />
     <Property Name="requisitos" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
   </EntityType>
+  <EntityType Name="Aporte">
+    <Key>
+      <PropertyRef Name="idaporte" />
+    </Key>
+    <Property Name="idaporte" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="puntaje" Type="Decimal" Precision="6" Scale="4" />
+    <Property Name="valor" Type="Decimal" Precision="6" Scale="4" />
+    <Property Name="ponderante" Type="Decimal" Precision="6" Scale="4" />
+    <Property Name="idcalificacion" Type="Int32" />
+    <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Calificacion" Relationship="Model.FK_Aporte_Calificacion" FromRole="Aporte" ToRole="Calificacion" />
+  </EntityType>
+  <Association Name="FK_Aporte_Calificacion">
+    <End Type="Model.Calificacion" Role="Calificacion" Multiplicity="0..1" />
+    <End Type="Model.Aporte" Role="Aporte" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Calificacion">
+        <PropertyRef Name="idcalificacion" />
+      </Principal>
+      <Dependent Role="Aporte">
+        <PropertyRef Name="idcalificacion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

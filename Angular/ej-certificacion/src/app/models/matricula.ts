@@ -3,8 +3,8 @@ import { Alumno } from './alumno';
 export class Matricula {
     idmatricula: number;
     fecha: string;
+    tipo = 'P';
     costo: number;
-    tipo: string;
-    alumno: Alumno;
-    materia: Materia;
+    Materia: Materia;
+    Alumno: Alumno;
 }

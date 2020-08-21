@@ -71,5 +71,17 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Aporte">
+      <EntityTypeMapping TypeName="Model.Aporte">
+        <MappingFragment StoreEntitySet="Aporte">
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="idcalificacion" ColumnName="idcalificacion" />
+          <ScalarProperty Name="ponderante" ColumnName="ponderante" />
+          <ScalarProperty Name="valor" ColumnName="valor" />
+          <ScalarProperty Name="puntaje" ColumnName="puntaje" />
+          <ScalarProperty Name="idaporte" ColumnName="idaporte" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

@@ -23,6 +23,9 @@ import { MatriculaFormComponent } from './components/matricula-form/matricula-fo
 import { TiposBecaFormComponent } from './components/tipos-beca-form/tipos-beca-form.component';
 import { TiposBecaCardComponent } from './components/tipos-beca-card/tipos-beca-card.component';
 import { TiposBecaListComponent } from './components/tipos-beca-list/tipos-beca-list.component';
+import { CalificacionFormComponent } from './components/calificacion-form/calificacion-form.component';
+import { AlumnoSearchComponent } from './components/alumno-search/alumno-search.component';
+import { AporteFormComponent } from './components/aporte-form/aporte-form.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +41,10 @@ import { TiposBecaListComponent } from './components/tipos-beca-list/tipos-beca-
     MatriculaFormComponent,
     TiposBecaFormComponent,
     TiposBecaCardComponent,
-    TiposBecaListComponent
+    TiposBecaListComponent,
+    CalificacionFormComponent,
+    AlumnoSearchComponent,
+    AporteFormComponent
   ],
   imports: [
     BrowserModule,

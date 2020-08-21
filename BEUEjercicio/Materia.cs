@@ -9,10 +9,10 @@
 
 namespace BEUEjercicio
 {
+    using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
-    using Newtonsoft.Json;
 
     public partial class Materia
     {
@@ -24,36 +24,23 @@ namespace BEUEjercicio
 
         [ScaffoldColumn(false)]
         public int idmateria { get; set; }
-
         [DataType(DataType.Text)]
         [Required(ErrorMessage = "El Nombre es requerido"), MaxLength(55)]
         [Display(Name = "Nombre")]
         public string nombre { get; set; }
-
         [DataType(DataType.Text)]
-        [Required(ErrorMessage = "El NRC es requerido"), MaxLength(4)]
+        //[Required(ErrorMessage = "El NRC es requerido"), MaxLength(4)] Produce un Validator Error
         [Display(Name = "NRC")]
         public string nrc { get; set; }
-
         [Range(2, 10, ErrorMessage = "El número de créditos debe ser entre 2 y 10")]
         [Required(ErrorMessage = "Los créditos  son requeridos")]
         [Display(Name = "Créditos")]
         public Nullable<short> creditos { get; set; }
-
-        [Required(ErrorMessage = "El Área es requerida")]
-        [Display(Name = "Área")]
         public Nullable<int> idarea { get; set; }
-
         [JsonIgnore]
         public virtual Area Area { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-
         [JsonIgnore]
         public virtual ICollection<Matricula> Matriculas { get; set; }
-
-        public override string ToString()
-        {
-            return nrc + " - " + nombre;
-        }
     }
 }

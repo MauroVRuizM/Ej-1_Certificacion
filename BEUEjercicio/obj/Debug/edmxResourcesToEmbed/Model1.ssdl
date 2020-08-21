@@ -12,6 +12,17 @@
     <Property Name="lugar_nacimiento" Type="varchar" MaxLength="50" />
     <Property Name="sexo" Type="nchar" MaxLength="1" />
   </EntityType>
+  <EntityType Name="Aporte">
+    <Key>
+      <PropertyRef Name="idaporte" />
+    </Key>
+    <Property Name="idaporte" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="puntaje" Type="decimal" Precision="6" Scale="4" />
+    <Property Name="valor" Type="decimal" Precision="6" Scale="4" />
+    <Property Name="ponderante" Type="decimal" Precision="6" Scale="4" />
+    <Property Name="idcalificacion" Type="int" />
+    <Property Name="nombre" Type="varchar" MaxLength="50" />
+  </EntityType>
   <EntityType Name="Area">
     <Key>
       <PropertyRef Name="idarea" />
@@ -64,6 +75,18 @@
     <Property Name="fecha_aprobacion" Type="date" />
     <Property Name="requisitos" Type="varchar" MaxLength="200" />
   </EntityType>
+  <Association Name="FK_Aporte_Calificacion">
+    <End Role="Calificacion" Type="Self.Calificacion" Multiplicity="0..1" />
+    <End Role="Aporte" Type="Self.Aporte" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Calificacion">
+        <PropertyRef Name="idcalificacion" />
+      </Principal>
+      <Dependent Role="Aporte">
+        <PropertyRef Name="idcalificacion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_Calificacion_Matricula">
     <End Role="Matricula" Type="Self.Matricula" Multiplicity="0..1" />
     <End Role="Calificacion" Type="Self.Calificacion" Multiplicity="*" />
@@ -114,11 +137,16 @@
   </Association>
   <EntityContainer Name="ModelStoreContainer">
     <EntitySet Name="Alumno" EntityType="Self.Alumno" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Aporte" EntityType="Self.Aporte" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Area" EntityType="Self.Area" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Calificacion" EntityType="Self.Calificacion" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Materia" EntityType="Self.Materia" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Matricula" EntityType="Self.Matricula" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TiposBeca" EntityType="Self.TiposBeca" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Aporte_Calificacion" Association="Self.FK_Aporte_Calificacion">
+      <End Role="Calificacion" EntitySet="Calificacion" />
+      <End Role="Aporte" EntitySet="Aporte" />
+    </AssociationSet>
     <AssociationSet Name="FK_Calificacion_Matricula" Association="Self.FK_Calificacion_Matricula">
       <End Role="Matricula" EntitySet="Matricula" />
       <End Role="Calificacion" EntitySet="Calificacion" />
