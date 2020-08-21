@@ -18,7 +18,6 @@ namespace WebAPI.Controllers
         {
             try
             {
-                matricula.idmateria = matricula.Materia.idmateria;
                 MatriculaBLL.Create(matricula);
                 return Content(HttpStatusCode.Created, "Matrícula creada correctamente");
             }

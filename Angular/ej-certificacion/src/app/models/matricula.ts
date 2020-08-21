@@ -7,4 +7,6 @@ export class Matricula {
     costo: number;
     Materia: Materia;
     Alumno: Alumno;
+    idMateria: number;
+    idAlumno: number;
 }

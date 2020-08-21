@@ -60,8 +60,8 @@ export class MatriculaFormComponent implements OnInit {
         console.error('Error en formulario');
         return;
       }
-      this.matricula.Alumno = this.alumno;
-      this.matricula.Materia = this.materia;
+      this.matricula.idAlumno = this.alumno.idalumno;
+      this.matricula.idMateria = this.materia.idmateria;
       console.log(this.matricula);
       this.matriculaService.save(this.matricula).subscribe(result => {
         console.log(result);
