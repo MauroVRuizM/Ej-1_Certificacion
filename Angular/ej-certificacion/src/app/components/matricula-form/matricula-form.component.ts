@@ -62,9 +62,7 @@ export class MatriculaFormComponent implements OnInit {
       }
       this.matricula.idAlumno = this.alumno.idalumno;
       this.matricula.idMateria = this.materia.idmateria;
-      console.log(this.matricula);
       this.matriculaService.save(this.matricula).subscribe(result => {
-        console.log(result);
         this.matricula = new Matricula();
         this.materia = new Materia();
       });

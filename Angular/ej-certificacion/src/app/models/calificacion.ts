@@ -6,6 +6,7 @@ export class Calificacion {
     unidad: string;
     valor: number;
     fecha: string;
+    idMatricula: number;
     Matricula: Matricula;
-    Aportes: Array<Aporte> = [];
+    Aporte: Array<Aporte> = [];
 }

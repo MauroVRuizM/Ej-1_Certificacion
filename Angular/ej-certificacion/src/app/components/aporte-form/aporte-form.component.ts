@@ -22,7 +22,7 @@ export class AporteFormComponent implements OnInit {
     this.form = this.formBuilder.group({
       nombre: ['', [Validators.required]],
       valor: ['', [Validators.required]],
-      ponderado: ['', [Validators.required]]
+      ponderante: ['', [Validators.required]]
     });
   }
 
@@ -30,7 +30,7 @@ export class AporteFormComponent implements OnInit {
     if (this.form.invalid){
       return;
     }
-    const aporte : Aporte = this.form.value;
+    const aporte: Aporte = this.form.value;
     this.aporteAdded.emit(aporte);
   }
 

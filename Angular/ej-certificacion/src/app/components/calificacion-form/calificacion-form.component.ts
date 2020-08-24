@@ -56,6 +56,7 @@ export class CalificacionFormComponent implements OnInit {
 
   selectMatricula(m: Matricula): void {
     this.calificacion.Matricula = m;
+    this.calificacion.idMatricula = m.idmatricula;
   }
 
   onSubmit(): void {
@@ -63,9 +64,8 @@ export class CalificacionFormComponent implements OnInit {
       console.error('Error en formulario');
       return;
     }
-
+    this.calificacion.Matricula = null;
     this.calificacionService.save(this.calificacion).subscribe( result => {
-      console.log(result);
       this.router.navigate(['/']);
     });
   }
@@ -76,14 +76,14 @@ export class CalificacionFormComponent implements OnInit {
   }
 
   addAporte($event): void {
-    this.calificacion.Aportes.push($event);
+    this.calificacion.Aporte.push($event);
     this.calcNota();
   }
 
   calcNota(): void{
     this.nota = 0;
-    this.calificacion.Aportes.forEach((x) => {
-      const puntaje = (x.valor * x.ponderado) / 20;
+    this.calificacion.Aporte.forEach((x) => {
+      const puntaje = (x.valor * x.ponderante) / 20;
       this.nota = this.nota + puntaje;
     });
   }
